@@ -87,7 +87,6 @@ function getFirstIpAddress(cidrStr, callback) {
   This section is used to test function and log any errors.
   We will make several positive and negative tests.
 */
-/**
 function main() {
   // Create some test data for getFirstIpAddress(), both valid and invalid.
   let sampleCidrs = ['172.16.10.0/24', '172.16.10.0 255.255.255.0', '172.16.10.128/25', '192.168.1.216/30'];
@@ -124,63 +123,8 @@ function main() {
   }
 
 }
-**/
 
 /*
   Call main to run it.
 */
-//////main();
-
-
-class IpAddress {
-    constructor() {
-        // IAP's global log object is used to output errors, warnings, and other
-        // information to the console, IAP's log files, or a Syslog server.
-        // For more information, consult the Log Class guide on the Itential
-        // Developer Hub https://developer.itential.io/ located
-        // under Documentation -> Developer Guides -> Log Class Guide
-        log.info('Starting the IpAddress product.');
-    }
-
-//// added getFirstIpAddr START
-    getFirstIpAddress(cidrStr, callback) {
-
-  // Initialize return arguments for callback
-  let firstIpAddress = null;
-  let callbackError = null; 
-
-  let successfulRespJson = {ipv4:null,ipv6:null};
-
-  // Instantiate an object from the imported class and assign the instance to variable cidr.
-  const cidr = new IPCIDR(cidrStr);
-  // Initialize options for the toArray() method.
-  // We want an offset of one and a limit of one.
-  // This returns an array with a single element, the first host address from the subnet.
-  const options = {
-    from: 1,
-    limit: 1
-  };
-
-  // Use the object's isValid() method to verify the passed CIDR.
-  if (!cidr.isValid()) {
-    // If the passed CIDR is invalid, set an error message.
-    callbackError = 'Error: Invalid CIDR passed to getFirstIpAddress.';
-  } else {
-    // If the passed CIDR is valid, call the object's toArray() method.
-    // Notice the destructering assignment syntax to get the value of the first array's element.
-    [firstIpAddress] = cidr.toArray(options);
-
-    //call to get the IPv6 for the returned IPv4
-    let respIPv6 = getIpv4MappedIpv6Address(firstIpAddress);
-    successfulRespJson = Ipv4Ipv6(firstIpAddress,respIPv6);
-  }
-  // Call the passed callback function.
-  // Node.js convention is to pass error data as the first argument to a callback.
-  // The IAP convention is to pass returned data as the first argument and error
-  // data as the second argument to the callback function.
-  return callback(successfulRespJson, callbackError);
-}
-//// added getFirstIpAddr END
-}
-
-module.exports = new IpAddress;
+main();
