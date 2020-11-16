@@ -1,6 +1,6 @@
 {
   "name": "@acme/app-ip_address",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "An IAP product serving IP address management funtions.",
   "main": "main.js",
   "scripts": {

@@ -27,8 +27,8 @@ const IPCIDR = require('ip-cidr');
 /**
  * @class Ipv4Ipv6
  * @type {Object}
- * @property {string} ipv4
- * @property {string} ipv6 -the IPv6 mapped from the IPv4 in the object
+ * @property {string} ipv4 -a string value representing the first host IPv4 address from the method's CIDR subnet argument
+ * @property {string} ipv6 -the mapped IPv6 address derived from the first host IPv4 address
  */
  function Ipv4Ipv6(ipv4,ipv6) {
      return {
@@ -45,8 +45,7 @@ class IpAddress {
         // For more information, consult the Log Class guide on the Itential
         // Developer Hub https://developer.itential.io/ located
         // under Documentation -> Developer Guides -> Log Class Guide
-        log.info('Starting the IpAddress product.');
-        
+        log.info('Starting the IpAddress product.');      
     }
 
     /**
@@ -59,7 +58,8 @@ class IpAddress {
     getFirstIpAddress(cidrStr, callback) {
 
         // Initialize return arguments for callback
-        let firstIpAddress = null;
+        let successfulRespJson =  null;
+        
         let callbackError = null; 
 
         let successfulRespJson = {ipv4:null,ipv6:null};
@@ -79,6 +79,7 @@ class IpAddress {
             // If the passed CIDR is invalid, set an error message.
             callbackError = 'Error: Invalid CIDR passed to getFirstIpAddress. upd cidrStr = '+ cidrStr;
         } else {
+            let firstIpAddress = null;
             // If the passed CIDR is valid, call the object's toArray() method.
             // Notice the destructering assignment syntax to get the value of the first array's element.
             [firstIpAddress] = cidr.toArray(options);
