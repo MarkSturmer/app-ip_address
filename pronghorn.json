@@ -39,7 +39,7 @@
         "description": "An object containing both an IPv4 address and its mapped ipv6 address.",
         "type": "object",
         "schema": {
-          "title": "firstIpAddress",
+          "title": "ipv4IpvsResponse",
           "$ref": "ipAddresses#/definitions/hostIpv4AndIpv6Address"
         }
       },
