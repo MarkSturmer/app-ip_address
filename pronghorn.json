@@ -35,7 +35,7 @@
         }
       ],
       "output": {
-        "name": "firstIpAddress",
+        "name": "ipv4IpvsResponse",
         "description": "An object containing both an IPv4 address and its mapped ipv6 address.",
         "type": "object",
         "schema": {
