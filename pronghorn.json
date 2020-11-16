@@ -35,11 +35,11 @@
         }
       ],
       "output": {
-        "name": "ipv4IpvsResponse",
+        "name": "firstIpAddress",
         "description": "An object containing both an IPv4 address and its mapped ipv6 address.",
         "type": "object",
         "schema": {
-          "title": "ipv4IpvsResponse",
+          "title": "hostIpv4AndIpv6Address",
           "$ref": "ipAddresses#/definitions/hostIpv4AndIpv6Address"
         }
       },
